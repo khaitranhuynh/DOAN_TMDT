@@ -1,0 +1,101 @@
+{{> banner}}
+ 
+
+	<!-- ================ category section start ================= -->		  
+  <section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+          <div class="sidebar-categories">
+            <div class="head">Danh Mục</div>
+            <ul class="main-categories">
+              <li class="common-filter">
+                <form action="#">
+                  <ul>
+                    {{#each categories}}
+                    <li class="filter-list"><input class="pixel-radio" type="radio" onclick="selectParam('category',{{id}})" id="category{{id}}" name="brand"><label for="category{{id}}" onclick="selectParam('category',{{id}})">{{ name }}<span>({{Products.length}})</span></label></li>
+                    {{/each}}
+                  </ul>
+                </form>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-filter">
+            
+            <div class="common-filter">       
+            </div>
+            <div class="common-filter">
+             </div>
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+          <!-- Start Filter Bar -->
+         
+          <div class="filter-bar d-flex flex-wrap align-items-center">
+            <div class="sorting">
+              <select>
+                <option> Tất cả sản phẩm </option>
+               
+              </select>
+            </div>
+      
+            
+             
+          </div>
+          <!-- End Filter Bar -->
+          <!-- Start Best Seller -->
+          <section class="lattest-product-area pb-40 category-list">
+            <div class="row">
+              {{#each products}}
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                    <img class="card-img" src="{{ imagepath }}" alt="">
+                    <ul class="card-product__imgOverlay">
+                      <li><button><i class="ti-search"></i></button></li>
+                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                      <li><button><i class="ti-heart"></i></button></li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <p>{{category.name}}</p>
+                    <h4 class="card-product__title"><a href="/products/{{id}}">{{ name }}</a></h4>
+                    <p class="card-product__price">${{ price }}</p>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </section>
+          <!-- End Best Seller -->
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ category section end ================= -->		  
+
+	 
+
+	<!-- ================ Subscribe section start ================= -->		  
+  <section class="subscribe-position">
+    <div class="container">
+      <div class="subscribe text-center">
+        <h3 class="subscribe__title">Get Update From Anywhere</h3>
+        <p>Bearing Void gathering light light his eavening unto dont afraid</p>
+        <div id="mc_embed_signup">
+          
+        </div>
+        
+      </div>
+    </div>
+  </section>
+	<!-- ================ Subscribe section end ================= -->		  
+
+
+
+<script>
+  function selectParam(key, value){
+    let url = `/products?${key}=${value}`;
+    location.href = url;
+  }
+</script>

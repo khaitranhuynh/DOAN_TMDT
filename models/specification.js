@@ -1,12 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Specification = sequelize.define('Specification', {
-    name: DataTypes.STRING,
-    summary: DataTypes.TEXT
-  }, {});
-  Specification.associate = function(models) {
-    // associations can be defined here
-    Specification.hasMany(models.ProductSpecification, { foreignKey: 'specificationID'});
-  };
-  return Specification;
+    const Specification = sequelize.define('Specification', {
+        name: DataTypes.STRING,
+        summary: DataTypes.TEXT
+    }, {});
+    Specification.associate = function(models) {
+        // associations can be defined here
+        Specification.hasMany(models.CourseSpecification, { foreignKey: 'specificationId' });
+    };
+    return Specification;
 };

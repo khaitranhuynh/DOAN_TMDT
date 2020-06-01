@@ -1,39 +1,41 @@
 let controller = {};
 let models = require('../models');
-let Product = models.Product;
+//let Product = models.Product;
+let Course = models.Course
 
 controller.getAll = (query) => {
     return new Promise((resolve,reject) => {
         let options = {
             include: [{ model: models.Category }],
-            attributes: ['id','name','imagepath','price','description','availability'],
+            attributes: ['id','name','price','summary','description', 'availability','imagepath','thumbnailPath','overallReview','reviewCount'],
             where: {}
         };
-        if (query.category) {
-            options.where.categoryID = query.category;
+        if (query.Category) {
+            options.where.categoryId = query.Category;
         }
-        Product
+        Course
         .findAll(options)    
         .then(data => resolve(data))
         .catch(error => reject(new Error(error)));
     });
 };
+/*
 controller.getAll = () => {
     return new Promise((resolve,reject)=> {
-        Product
+        Course
             .findAll({
-                attributes: ['id','name','imagepath','price','description','availability'],
-                include: [{ model: models.Product}]
+                attributes: ['id','name','price','sumary','description', 'availability','imagepath','thumbnailPath' ,'overallReview','reviewCount'],
+                include: [{ model: models.Course}]
             })
             .then(data => resolve(data))
             .catch(error => reject(new Error(error)));
     }
     )
-}
+}*/
 
 controller.getById = (id) => {
     return new Promise((resolve,reject) => {
-        Product
+        Course
         .findOne({
             where: { id: id },
             include: [{ model: models.Category }]
@@ -43,3 +45,6 @@ controller.getById = (id) => {
     });
 };
 module.exports = controller;
+
+ 
+  

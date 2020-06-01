@@ -6,7 +6,7 @@ router.get('/',(req,res,next)=>{
     categoryController
         .getAll()
         .then(data => {
-            res.locals.categories = data;
+            res.locals.Categories = data;
             res.render('index');
         })
         .catch(error => next (error));

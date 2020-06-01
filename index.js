@@ -3,6 +3,7 @@ let app = express();
 
  
 //set public static folder
+app.use(express.static('public'))
 app.use(express.static(__dirname + '/public'));
 
 //use view engine
@@ -21,7 +22,7 @@ app.set('view engine','hbs');
 // /prodocts//:id => single product
 
 app.use('/',require('./routes/indexRouter'));
-app.use('/products',require('./routes/productRouter'));
+app.use('/Courses',require('./routes/productRouter'));
 //app.use('/demosanpham',require('.routes/linkRouter')); // chưa chạy được 
 
 app.get('/sync', (req,res) => {
@@ -51,4 +52,5 @@ app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), () => {
     console.log(`sever is running at port ${app.get('port')}`);
 });
-  
+
+
